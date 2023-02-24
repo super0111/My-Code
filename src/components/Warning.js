@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material"
 import ClearIcon from '@mui/icons-material/Clear';
 
 import pancakeSwapIcon from '../assets/images/market maker/pancake swap symbol.webp'
+import { palette } from "../themes";
 
 export const Warning = (props) => {
   const { setIsWarning } = props
@@ -21,23 +22,16 @@ export const Warning = (props) => {
           background: 'rgba(39, 38, 44, 0.4)',
           borderRadius: '16px',
         }}>
-          <Typography mr={1} sx={{
+          <Typography mr={1} variant="h4" sx={{
             color: '#ffb237',
             fontWeight: 600,
-            lineHeight: 1.5,
             textTransform: 'uppercase',
-            fontSize: 14,
           }}>
             PHISHING WARNING:
           </Typography>
-          <Typography sx={{
-            color: 'rgb(189, 194, 196)',
-            fontWeight: 400,
-            lineHeight: 1.5,
-            fontSize: 14,
-          }}>
+          <Typography variant="h4">
             Please make sure you're visiting
-            <span style={{color: 'white', fontWeight: 700, margin: '0 5px'}}>https://pancakeswap.finance</span>
+            <span style={{color: palette.common.white, fontWeight: 700, margin: '0 5px'}}>https://pancakeswap.finance</span>
             -check the URL carefully.
           </Typography>
         </Box>
@@ -51,7 +45,7 @@ export const Warning = (props) => {
           cursor: 'pointer',
         }}
       >
-        <ClearIcon  sx={{ color: 'white' }}/>
+        <ClearIcon  sx={{ color: palette.common.white, fontSize: 18 }}/>
       </Box>
     </Box>
   )
