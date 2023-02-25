@@ -1,3 +1,11 @@
 body {
   margin: 0 !important;
 }
+
+.network-dropdown-body {
+  display: none !important;
+}
+
+.network-dropdown:hover .network-dropdown-body {
+  display: flex !important;
+}

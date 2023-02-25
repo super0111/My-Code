@@ -33,9 +33,15 @@ const createPaletteSystem = () => ({
     black: '#000',
     white: '#FFFFFF',
   },
+  primary: {
+    dark: '#513F01 !important',
+    light: '#CA9F02',
+    main: '#31d0aa',
+  },
   text: {
     disabled: '#353547',
-    primary: '#31d0aa',
+    primary: '#b8add2',
+    secondary: '#9a6aff',
   },
 })
 const theme = createTheme({
