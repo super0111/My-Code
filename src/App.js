@@ -3,18 +3,22 @@ import {
   Routes,
   Route, 
 } from "react-router-dom";
+import { ThemeProvider } from '@mui/material'
+import theme from './themes'
 import { Layout } from './components'
 import { MarketMaker } from './pages'
 
 function App() {
   return (
-    <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route exact path="/" element={ <MarketMaker />} />
-        </Routes>
-      </Layout>
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route exact path="/" element={ <MarketMaker />} />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
