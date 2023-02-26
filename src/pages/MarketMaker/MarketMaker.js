@@ -1,12 +1,13 @@
 import { Box } from "@mui/material"
-import { Layout1 } from "../../components/Layout1"
+import { Topbar } from './'
 
 export const MarketMaker = () => {
   return (
-    <Box sx={{
-
+    <Box py={12} sx={{
+      background: '#454677',
     }}>
-      MarketMaker
+      <Topbar />
+      
     </Box>
   )
 }
