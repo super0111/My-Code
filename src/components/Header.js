@@ -12,9 +12,9 @@ import EthSymbol from '../assets/images/market maker/Eth Symbol.png'
 import { palette } from "../themes"
 
 const navItems = [
+  { name: 'Win', to: '/win' },
   { name: 'Trade', to: '/trade' },
   { name: 'Earn', to: 'earn' },
-  { name: 'Win', to: '/win' },
   { name: 'NFT', to: 'nft' },
 ]
 
@@ -63,7 +63,7 @@ export const Header = () => {
             }}>
               <Link
                 to={item.to}
-                style={{ color: palette.text.primary, textDecoration: 'none',}}
+                style={{ color: palette.text.primary, textDecoration: 'none', textTransform: 'initial',}}
               >
                 {item.name}
               </Link>

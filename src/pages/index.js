@@ -1,1 +1,5 @@
-export * from './MarketMaker/MarketMaker'
+export * from './MarketMaker'
+export * from './MarketMaker/Prediction/Prediction'
+export * from './MarketMaker/Lottery/Lottery'
+export * from './MarketMaker/Pottery/Pottery'
+export * from './MarketMaker/TradingCompetition/TradingCompetition'
