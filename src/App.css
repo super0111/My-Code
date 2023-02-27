@@ -9,3 +9,37 @@ body {
 .network-dropdown:hover .network-dropdown-body {
   display: flex !important;
 }
+
+
+.swiper-container {
+  list-style: none;
+}
+
+.pagination {
+  bottom: 0;
+  padding-bottom: 4px;
+}
+
+.slide {
+  width: 320px;
+  height: 320px;
+  line-height: 320px;
+  /* background: #383241; */
+  background: #27262c;
+  border-radius: 24px;
+  overflow: hidden;
+}
+.slider-top {
+  -webkit-box-align: center;
+  align-items: center;
+  background: var(--colors-cardBorder);
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  height: 37px;
+  padding: 8px;
+}
+
+.swiper-button-prev, .swiper-button-next {
+  display: none;
+}

@@ -17,11 +17,11 @@ function App() {
         <Layout>
           <Layout1>
             <Routes>
-              <Route exact path="/win" element={ <MarketMaker />}>
-                  <Route path="prediction" element={ <Prediction />} />
-                  <Route path="tranding-competition" element={ <TradingCompetition />} />
-                  <Route path="lottery" element={ <Lottery />} />
-                  <Route path="pottery" element={ <Pottery />} />
+              <Route exact path="/" element={ <MarketMaker />}>
+                <Route path="prediction" element={ <Prediction />} />
+                <Route path="tranding-competition" element={ <TradingCompetition />} />
+                <Route path="lottery" element={ <Lottery />} />
+                <Route path="pottery" element={ <Pottery />} />
               </Route>
             </Routes>
           </Layout1>
