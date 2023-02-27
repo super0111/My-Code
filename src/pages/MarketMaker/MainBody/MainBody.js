@@ -11,14 +11,15 @@ import "swiper/swiper-bundle.css";
 
 import { Topbar } from "./Topbar/Topbar";
 import { Chartbar } from "./Chartbar/Chartbar";
-import { SliderItem } from "./SliderItem";
+import { SliderItem0, SliderItem1, SliderItem2, SliderItem3, SliderItem4 } from "./SliderItem";
+
 
 SwiperCore.use([Navigation, Pagination, Autoplay, Virtual]);
 
 export const MainBody = () => {
   const slides = [];
   const [swiper, setSwiper] = useState(null);
-  let length = 12;
+  let length = 3;
 
 
   const next = () => {
@@ -31,7 +32,7 @@ export const MainBody = () => {
   for (let i = 0; i < length; i++) {
     slides.push(
       <SwiperSlide key={`slide-${i}`} style={{ listStyle: "none" }}>
-        <SliderItem />
+        <SliderItem0 />
       </SwiperSlide>
     );
   }
@@ -44,7 +45,7 @@ export const MainBody = () => {
           id="swiper"
           virtual
           slidesPerView={9/2}
-          initialSlide={length/2}
+          initialSlide={3}
           centeredSlides={true}
           centerInsufficientSlides={true}
           // slidesPerColumn={2}
@@ -72,6 +73,18 @@ export const MainBody = () => {
           }}
         >
           {slides}
+          <SwiperSlide style={{ listStyle: "none" }}>
+            <SliderItem1 />
+          </SwiperSlide>
+          <SwiperSlide style={{ listStyle: "none" }}>
+            <SliderItem2 />
+          </SwiperSlide>
+          <SwiperSlide style={{ listStyle: "none" }}>
+            <SliderItem3 />
+          </SwiperSlide>
+          <SwiperSlide style={{ listStyle: "none" }}>
+            <SliderItem4 />
+          </SwiperSlide>
         </Swiper>
       </Box>
       <Chartbar />  

@@ -6,7 +6,7 @@ export const MiddleItem3 = () => {
   return (
     <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} p={4} sx={{
       background: '#27262c',
-      border: '1px solid #ed4b9e',
+      border: '2px solid #383241',
       borderRadius: '14px',
     }}>
       <Typography sx={{
