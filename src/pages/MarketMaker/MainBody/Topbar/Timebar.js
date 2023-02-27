@@ -2,9 +2,13 @@ import { Box, Typography } from "@mui/material"
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import RestoreIcon from '@mui/icons-material/Restore';
+import Countdown from "react-countdown";
+
 import { palette } from "../../../../themes"
 
-export const Timebar = () => {
+export const Timebar = (props) => {
+  const { renderer, count } = props;
+
   return (
     <Box display={'flex'} alignItems={'center'} sx={{
       width: '305px',
@@ -19,7 +23,7 @@ export const Timebar = () => {
           fontWeight: 700,
           color: palette.text.secondary,
         }}>
-          00:30
+          <Countdown date={Date.now() + count} renderer={renderer} />
         </Typography>
         <Typography variant="h5" sx={{
           color: palette.common.white,
