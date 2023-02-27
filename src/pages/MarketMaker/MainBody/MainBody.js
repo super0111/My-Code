@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {
   Navigation,
@@ -12,7 +12,30 @@ import "swiper/swiper-bundle.css";
 import { Topbar } from "./Topbar/Topbar";
 import { Chartbar } from "./Chartbar/Chartbar";
 import { SliderItem0, SliderItem1, SliderItem2, SliderItem3, SliderItem4 } from "./SliderItem";
+import { palette } from "../../../themes";
 
+const count1 = 300000;
+const count2 = 300000*2;
+const Completionist = () => <span>You are good to go!</span>;
+const renderer = ({ minutes, seconds, completed }) => {
+  if (completed) {
+    // Render a complete state
+    return <Completionist />;
+  } else {
+    // Render a countdown
+    return (
+      <Typography sx={{
+        fontSize: 20,
+        fontWeight: 700,
+        textAlign: 'center',
+        width: '100%',  
+        color: palette.common.white,
+      }}>
+        ~{minutes}:{seconds}
+      </Typography>
+    );
+  }
+};
 
 SwiperCore.use([Navigation, Pagination, Autoplay, Virtual]);
 
@@ -20,7 +43,6 @@ export const MainBody = () => {
   const slides = [];
   const [swiper, setSwiper] = useState(null);
   let length = 3;
-
 
   const next = () => {
     swiper.slideNext();
@@ -39,7 +61,7 @@ export const MainBody = () => {
 
   return (
     <Box mt={8}>
-      <Topbar next={next} previous={previous} />
+      <Topbar next={next} previous={previous} renderer={renderer} count={count1}/>
       <Box>
         <Swiper
           id="swiper"
@@ -55,22 +77,19 @@ export const MainBody = () => {
           // autoplay
           // loop
           onReachEnd={() => {
-            console.log("reach end");
             const tmp = slides.unshift();
             slides.push(tmp);
           }}
           navigation
           // pagination
           onSwiper={(s) => {
-            console.log("initialize swiper", s);
             setSwiper(s);
           }}
 
-
-          onInit={(swiper) => console.log("Swiper initialized!", swiper)}
-          onSlideChange={(swiper) => {
-            console.log("Slide index changed to: ", swiper.activeIndex);
-          }}
+          // onInit={(swiper) => console.log("Swiper initialized!", swiper)}
+          // onSlideChange={(swiper) => {
+          //   console.log("Slide index changed to: ", swiper.activeIndex);
+          // }}
         >
           {slides}
           <SwiperSlide style={{ listStyle: "none" }}>
@@ -80,10 +99,10 @@ export const MainBody = () => {
             <SliderItem2 />
           </SwiperSlide>
           <SwiperSlide style={{ listStyle: "none" }}>
-            <SliderItem3 />
+            <SliderItem3 renderer={renderer} count={count1}/>
           </SwiperSlide>
           <SwiperSlide style={{ listStyle: "none" }}>
-            <SliderItem4 />
+            <SliderItem4 renderer={renderer} count={count2}/>
           </SwiperSlide>
         </Swiper>
       </Box>

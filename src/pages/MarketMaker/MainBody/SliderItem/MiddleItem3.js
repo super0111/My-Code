@@ -1,8 +1,11 @@
 import { Box, Typography } from "@mui/material"
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import Countdown from "react-countdown";
+
 import { palette } from "../../../../themes";
 
-export const MiddleItem3 = () => {
+export const MiddleItem3 = (props) => {
+  const { renderer, count } = props;
+
   return (
     <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} p={4} sx={{
       background: '#27262c',
@@ -17,15 +20,8 @@ export const MiddleItem3 = () => {
       }}>
         Entry starts
       </Typography>
-      <Typography sx={{
-        fontSize: 20,
-        fontWeight: 700,
-        textAlign: 'center',
-        width: '100%',  
-        color: palette.common.white,
-      }}>
-        ~0.2:18
-      </Typography>
+
+      <Countdown date={Date.now() + count} renderer={renderer} />
     </Box>
   )
 }
