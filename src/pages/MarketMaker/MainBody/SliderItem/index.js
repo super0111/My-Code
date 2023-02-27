@@ -1,1 +1,5 @@
-export * from './SliderItem'
+export * from './SliderItem0'
+export * from './SliderItem1'
+export * from './SliderItem2'
+export * from './SliderItem3'
+export * from './SliderItem4'
