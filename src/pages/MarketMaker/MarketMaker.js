@@ -3,7 +3,7 @@ import { MainBody } from './'
 
 export const MarketMaker = () => {
   return (
-    <Box py={12} sx={{
+    <Box pt={12} sx={{
       background: '#454677',
     }}>
       <MainBody />

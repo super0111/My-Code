@@ -19,12 +19,7 @@ export const Timebar = (props) => {
         position: 'relative',
         borderRadius: '999px',
       }}>
-        <Typography variant="h3" sx={{
-          fontWeight: 700,
-          color: palette.text.secondary,
-        }}>
-          <Countdown date={Date.now() + count} renderer={renderer} />
-        </Typography>
+        <Countdown date={Date.now() + count} renderer={renderer} />
         <Typography variant="h5" sx={{
           color: palette.common.white,
         }}>
