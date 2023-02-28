@@ -5,9 +5,9 @@ import BNBSymbol1 from '../../../../assets/images/market maker/BNB Symbol1.png'
 export const BNBUSDValue = () => {
   return (
     <Box sx={{
-      width: '305px',
+      width: { sm: '245px', xs: '130px'},
     }}>
-      <Box ml={5} display='flex' justifyContent='space-betweem' alignItems='center' py={2} px={4} sx={{
+      <Box ml={{ md: 5, xs: 2}} display='flex' justifyContent='space-betweem' alignItems='center' py={2} px={4} sx={{
         width: 'fit-content',
         background: palette.common.black,
         position: 'relative',
@@ -16,22 +16,25 @@ export const BNBUSDValue = () => {
       }}>
         <Box component='img' src={BNBSymbol1} alt='sumbol' sx={{
           position: 'absolute',
-          left: '-20px',
-          top: '-2px',
-          width: '45px',
+          left: { md: '-20px', xs: '-10px'},
+          top: { md: '-2px', xs: '10px'},
+          width: { md: '45px', xs: '35px'},
         }} />
-        <Typography ml={5} variant="h3" sx={{
-          color: palette.common.white,
-          fontWeight: 700,
-        }}>
-          BNBUSD
-        </Typography>
-        <Typography ml={3} variant="h5" sx={{
-          color: palette.common.white,
-          fontWeight: 400,
-        }}>
-          $ 301.5325
-        </Typography>
+        <Box display={'flex'} flexDirection={{ md: 'row', xs: 'column' }} alignItems={{ md: 'center', xs: 'start' }}>
+          <Typography ml={5} variant="h3" sx={{
+            color: palette.common.white,
+            fontWeight: 700,
+          }}>
+            BNBUSD
+          </Typography>
+          <Typography ml={3} variant="h5" sx={{
+            color: palette.common.white,
+            fontWeight: 700,
+            marginLeft: {md: 0, xs: '20px'}
+          }}>
+            $ 301.5325
+          </Typography>
+        </Box>
       </Box>
     </Box>
   )

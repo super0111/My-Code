@@ -10,7 +10,7 @@ export const Layout = (props) => {
         isWarning === true ? 
         <Warning isWarning={isWarning} setIsWarning={setIsWarning} /> : ''
       }
-      <Header />
+      {/* <Header /> */}
       <div>
         {props.children}
       </div>

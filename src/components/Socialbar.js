@@ -17,11 +17,11 @@ const socialIcons = [
 
 export const Socialbar = () => {
   return (
-    <Box display={'flex'} alignItems={'center'} gap={6} my={6}>
+    <Box display={'flex'} alignItems={'center'} gap={{ sm: 6, xs: 4 }} my={6}>
     {
       socialIcons.map((item, i) => (
         <Link key={i} href={item.href} target='_blank' sx={{
-          fontSize: 25,
+          fontSize: { sm: 25, xs: 20},
           color: '#b8add2',
           '&:hover': {
             color: '#b0adb8',
