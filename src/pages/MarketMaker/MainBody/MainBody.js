@@ -16,13 +16,11 @@ import { palette } from "../../../themes";
 
 const count1 = 300000;
 const count2 = 300000*2;
-const Completionist = () => <span>You are good to go!</span>;
+const Completionist = () => <span>go!</span>;
 const renderer = ({ minutes, seconds, completed }) => {
   if (completed) {
-    // Render a complete state
     return <Completionist />;
   } else {
-    // Render a countdown
     return (
       <Typography sx={{
         fontSize: 20,
@@ -32,6 +30,20 @@ const renderer = ({ minutes, seconds, completed }) => {
         color: palette.common.white,
       }}>
         ~{minutes}:{seconds}
+      </Typography>
+    );
+  }
+};
+const renderer1 = ({ minutes, seconds, completed }) => {
+  if (completed) {
+    return <Completionist />;
+  } else {
+    return (
+      <Typography variant="h3" sx={{
+        fontWeight: 700,
+        color: palette.text.secondary,
+      }}>
+        {minutes}:{seconds}
       </Typography>
     );
   }
@@ -61,51 +73,49 @@ export const MainBody = () => {
 
   return (
     <Box mt={8}>
-      <Topbar next={next} previous={previous} renderer={renderer} count={count1}/>
-      <Box>
-        <Swiper
-          id="swiper"
-          virtual
-          slidesPerView={9/2}
-          initialSlide={3}
-          centeredSlides={true}
-          centerInsufficientSlides={true}
-          // slidesPerColumn={2}
-          // slidesPerColumnFill="row"
-          spaceBetween={30}
-          // slidesPerGroup={2}
-          // autoplay
-          // loop
-          onReachEnd={() => {
-            const tmp = slides.unshift();
-            slides.push(tmp);
-          }}
-          navigation
-          // pagination
-          onSwiper={(s) => {
-            setSwiper(s);
-          }}
+      <Topbar next={next} previous={previous} renderer={renderer1} count={count1}/>
+      <Swiper
+        id="swiper"
+        virtual
+        slidesPerView={9/2}
+        initialSlide={3}
+        centeredSlides={true}
+        centerInsufficientSlides={true}
+        // slidesPerColumn={2}
+        // slidesPerColumnFill="row"
+        spaceBetween={30}
+        // slidesPerGroup={2}
+        // autoplay
+        // loop
+        onReachEnd={() => {
+          const tmp = slides.unshift();
+          slides.push(tmp);
+        }}
+        navigation
+        // pagination
+        onSwiper={(s) => {
+          setSwiper(s);
+        }}
 
-          // onInit={(swiper) => console.log("Swiper initialized!", swiper)}
-          // onSlideChange={(swiper) => {
-          //   console.log("Slide index changed to: ", swiper.activeIndex);
-          // }}
-        >
-          {slides}
-          <SwiperSlide style={{ listStyle: "none" }}>
-            <SliderItem1 />
-          </SwiperSlide>
-          <SwiperSlide style={{ listStyle: "none" }}>
-            <SliderItem2 />
-          </SwiperSlide>
-          <SwiperSlide style={{ listStyle: "none" }}>
-            <SliderItem3 renderer={renderer} count={count1}/>
-          </SwiperSlide>
-          <SwiperSlide style={{ listStyle: "none" }}>
-            <SliderItem4 renderer={renderer} count={count2}/>
-          </SwiperSlide>
-        </Swiper>
-      </Box>
+        // onInit={(swiper) => console.log("Swiper initialized!", swiper)}
+        // onSlideChange={(swiper) => {
+        //   console.log("Slide index changed to: ", swiper.activeIndex);
+        // }}
+      >
+        {slides}
+        <SwiperSlide style={{ listStyle: "none" }}>
+          <SliderItem1 />
+        </SwiperSlide>
+        <SwiperSlide style={{ listStyle: "none" }}>
+          <SliderItem2 />
+        </SwiperSlide>
+        <SwiperSlide style={{ listStyle: "none" }}>
+          <SliderItem3 renderer={renderer} count={count1}/>
+        </SwiperSlide>
+        <SwiperSlide style={{ listStyle: "none" }}>
+          <SliderItem4 renderer={renderer} count={count2}/>
+        </SwiperSlide>
+      </Swiper>
       <Chartbar />  
     </Box>
   )
