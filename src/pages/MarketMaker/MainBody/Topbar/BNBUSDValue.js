@@ -9,7 +9,6 @@ export const BNBUSDValue = () => {
     }}>
       <Box ml={{ md: 5, xs: 2}} display='flex' justifyContent='space-betweem' alignItems='center' py={2} px={4} sx={{
         width: 'fit-content',
-        background: palette.common.black,
         position: 'relative',
         background: palette.common.black,
         borderRadius: '999px',

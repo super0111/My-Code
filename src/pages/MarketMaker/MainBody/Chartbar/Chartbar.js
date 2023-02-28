@@ -73,7 +73,7 @@ export const Chartbar = () => {
             alt='img' 
             sx={{
               width: '180px',
-              margin: '10px 20px 0 0',
+              margin: { sm: '10px 20px 0 0', xs: '15px 0 0 0'},
               cursor: 'pointer',
             }} 
           />

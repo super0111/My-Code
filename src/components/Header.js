@@ -1,15 +1,19 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from "react-router-dom"
 import { Box, Button, Typography } from "@mui/material"
 import LanguageIcon from '@mui/icons-material/Language';
 import SettingsIcon from '@mui/icons-material/Settings';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 
+import { ethers } from 'ethers'
+import ContractUtils from '../utils/contractUtils';
+
 import BNBSymbol from '../assets/images/market maker/BNB Symbol.png'
 import EthSymbol from '../assets/images/market maker/Eth Symbol.png'
 
 import { palette } from "../themes"
+import { Context } from '../context/AppProvider';
 
 const navItems = [
   { name: 'Win', to: '/win' },
@@ -25,6 +29,7 @@ const networks = [
 
 export const Header = () => {
   const navigate = useNavigate()
+  const [currentAccount, setCurrentAccount] = useContext(Context)
   const [ selectedNetworkName, setSelectedNetworkName ] = useState('BNB Smart Chain')
 
   const handleSelectNetwork = (i, name) => {
@@ -32,9 +37,66 @@ export const Header = () => {
       setSelectedNetworkName(name)
   }
 
-  const walletConnect = () => {
+  // const checkWalletIsConnected = async () => {
+  //   const { ethereum } = window
 
+  //   if (!ethereum) {
+  //     console.log('Make sure Metamask is installed!')
+  //     return
+  //   } else {
+  //     console.log('Wallet exists,ready to go')
+  //   }
+
+  //   const accounts = await ethereum.request({ method: 'eth_accounts' })
+
+  //   if (accounts.length !== 0) {
+  //     const account = accounts[0]
+  //     console.log('found auth. account', account)
+  //     setCurrentAccount(account)
+  //   } else {
+  //     console.log('no auth. account found')
+  //   }
+  // }
+
+  // const connectWalletHandler = async () => {
+  //   const { ethereum } = window
+  //   if (!ethereum) {
+  //     alert('Install Metamask!')
+  //   }
+
+  //   try {
+  //     const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+  //     console.log('Found an  account!Address: ', accounts[0])
+  //     setCurrentAccount(accounts[0])
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+  const connectWalletHandler = async () => {
+    let res = await ContractUtils.connectWallet();
+    if (res.address) {
+      setCurrentAccount(res.address);
+      window.localStorage.setItem('walletLocalStorageKey', res.address);
+    }
+    else {
+      setCurrentAccount("");
+    }
   }
+
+  const onClickDisconnect = async () => {
+    await ContractUtils.disconnectWallet();
+    await window.localStorage.removeItem('walletLocalStorageKey');
+    setCurrentAccount("");
+    window.location.reload();
+  }
+
+  // useEffect(() => {
+  //   const effect = async () => {
+  //     await ContractUtils.checkWalletIsConnected()
+  //   }
+  //   effect()
+  // }, [])
+
   return (
     <Box display={'flex'} flexDirection={'column'}>
       <Box p={3} display='flex' justifyContent='space-between' alignItems='center' sx={{
@@ -158,30 +220,56 @@ export const Header = () => {
               </Box>
             </Box>
           </Box>
-          <Button
-            onClick={walletConnect}
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              border: 'none',
-              borderRadius: '16px',
-              textTransform: 'inherit',
-              boxShadow: 'rgb(14 14 44 / 40%) 0px -1px 0px 0px inset',
-              fontSize: 14,
-              fontWeight: 600,
-              justifyContent: 'center',
-              outline: 'none',
-              transition: 'background-color 0.2s ease 0s, opacity 0.2s ease 0s',
-              backgroundColor: '#1fc7d4',
-              color: '#191326',
-              padding: '4px 16px',
-              '&:hover': {
-                backgroundColor: '#1c8a93',
-              }
-            }}
-          >
-            Connect Wallet
-          </Button>
+          {currentAccount === '' ?
+            <Button
+              onClick={connectWalletHandler}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                border: 'none',
+                borderRadius: '16px',
+                textTransform: 'inherit',
+                boxShadow: 'rgb(14 14 44 / 40%) 0px -1px 0px 0px inset',
+                fontSize: 14,
+                fontWeight: 600,
+                justifyContent: 'center',
+                outline: 'none',
+                transition: 'background-color 0.2s ease 0s, opacity 0.2s ease 0s',
+                backgroundColor: '#1fc7d4',
+                color: '#191326',
+                padding: '4px 16px',
+                '&:hover': {
+                  backgroundColor: '#1c8a93',
+                }
+              }}
+            >
+              Connect Wallet
+            </Button> :
+            <Button
+              onClick={() => onClickDisconnect()}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                border: 'none',
+                borderRadius: '16px',
+                textTransform: 'inherit',
+                boxShadow: 'rgb(14 14 44 / 40%) 0px -1px 0px 0px inset',
+                fontSize: 14,
+                fontWeight: 600,
+                justifyContent: 'center',
+                outline: 'none',
+                transition: 'background-color 0.2s ease 0s, opacity 0.2s ease 0s',
+                backgroundColor: '#1fc7d4',
+                color: '#191326',
+                padding: '4px 16px',
+                '&:hover': {
+                  backgroundColor: '#1c8a93',
+                }
+              }}
+            >
+              {currentAccount.substr(0, 4)}...{currentAccount.slice(38)}
+            </Button>
+          }
         </Box>
       </Box>
       <Box display={{md: 'none', xs: 'flex'}} justifyContent={'end'} alignItems='center' sx={{ background: 'black' }}>
