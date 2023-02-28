@@ -2,13 +2,12 @@ import { Box } from "@mui/material"
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 
-export const Sliderbar = (props) => {
+export const SliderbarMobile = (props) => {
   const { next, previous } = props;
 
   return (
-    <Box sx={{
-      width: '305px',
-      display: { sm: 'block', xs: 'none' },
+    <Box display={{ sm: 'none', xs: 'flex'}} justifyContent={'center'} sx={{
+      width: '100%',
     }}>
       <Box mr={3} display={'flex'} justifyContent={'center'} alignItems={'center'} gap={2}>
         <ArrowBackIcon

@@ -42,12 +42,15 @@ export const Chartbar = () => {
 
   return (
     <Box mt={2}>
-      <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
+      <Box display={'flex'} flexDirection={{ md: 'row', xs: 'column-reverse' }} justifyContent={'space-between'} alignItems={'center'}>
         <Tabs value={value} onChange={handleChange} onClick={()=>setIsChartShow(true)} sx={{
-          marginLeft: '30px',
+          marginLeft: { sm: '30px', xs: '0px'},
           borderBottom: '1px solid #323144',
         }}>
-          <Tab 
+          <Tab sx={{
+              padding: {sm: '12px 16px', xs: '8px 8px'},
+              fontSize: {sm: 14, xs: 12},
+            }}
             label={
               <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
                 <BarChartIcon />

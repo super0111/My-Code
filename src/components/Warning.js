@@ -17,7 +17,7 @@ export const Warning = (props) => {
         <Box component='img' src={pancakeSwapIcon} alt='icon' sx={{
           width: '50px',
         }} />
-        <Box display='flex' alignItems='center' sx={{
+        <Box display='flex' flexDirection={{ md: 'row', xs: 'column' }} alignItems={{ md: 'center', xs: 'start'}} sx={{
           padding: '16px 8px',
           background: 'rgba(39, 38, 44, 0.4)',
           borderRadius: '16px',
@@ -29,7 +29,7 @@ export const Warning = (props) => {
           }}>
             PHISHING WARNING:
           </Typography>
-          <Typography variant="h4">
+          <Typography variant="h4" sx={{ wordBreak: 'break-all' }}>
             Please make sure you're visiting
             <span style={{color: palette.common.white, fontWeight: 700, margin: '0 5px'}}>https://pancakeswap.finance</span>
             -check the URL carefully.
@@ -41,7 +41,7 @@ export const Warning = (props) => {
         sx={{
           position: 'absolute',
           right: '15px',
-          top: '25px',
+          top: { sm: '25px', xs: '15px'},
           cursor: 'pointer',
         }}
       >

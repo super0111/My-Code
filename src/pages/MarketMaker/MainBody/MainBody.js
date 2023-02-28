@@ -13,10 +13,11 @@ import { Topbar } from "./Topbar/Topbar";
 import { Chartbar } from "./Chartbar/Chartbar";
 import { SliderItem0, SliderItem1, SliderItem2, SliderItem3, SliderItem4 } from "./SliderItem";
 import { palette } from "../../../themes";
+import { SliderbarMobile } from "./Topbar/SliderbarMobile";
 
 const count1 = 300000;
 const count2 = 300000*2;
-const Completionist = () => <span>go!</span>;
+const Completionist = () => console.log('count downed');
 const renderer = ({ minutes, seconds, completed }) => {
   if (completed) {
     return <Completionist />;
@@ -72,8 +73,9 @@ export const MainBody = () => {
   }
 
   return (
-    <Box mt={8}>
+    <Box mt={{ md: 8, xs: 0}}>
       <Topbar next={next} previous={previous} renderer={renderer1} count={count1}/>
+      <SliderbarMobile next={next} previous={previous} />
       <Swiper
         id="swiper"
         virtual
@@ -84,6 +86,43 @@ export const MainBody = () => {
         slidesPerColumn={2}
         slidesPerColumnFill="row"
         spaceBetween={30}
+        breakpoints={{
+          320: {
+            width: 320,
+            slidesPerView: 1.05,
+            spaceBetweenSlides: 10
+          },
+          375: {
+            width: 375,
+            slidesPerView: 1.27,
+            spaceBetweenSlides: 10
+          },
+          425: {
+            width: 425,
+            slidesPerView: 1.4,
+            spaceBetweenSlides: 10
+          },
+          640: {
+            width: 640,
+            slidesPerView: 2,
+            spaceBetweenSlides: 10
+          },
+          768: {
+            width: 768,
+            slidesPerView: 2.5,
+            spaceBetweenSlides: 15
+          },
+          1024: {
+            width: 1024,
+            slidesPerView: 3.2,
+            spaceBetweenSlides: 20
+          },
+          1440: {
+            width: 1440,
+            slidesPerView: 4.5,
+            spaceBetweenSlides: 30
+          },
+        }}
         // slidesPerGroup={2}
         // autoplay
         // loop
@@ -116,7 +155,6 @@ export const MainBody = () => {
           <SliderItem4 renderer={renderer} count={count2}/>
         </SwiperSlide>
       </Swiper>
-      
       <Chartbar />  
     </Box>
   )
