@@ -83,8 +83,8 @@ export const MainBody = () => {
         initialSlide={3}
         centeredSlides={true}
         centerInsufficientSlides={true}
-        slidesPerColumn={2}
-        slidesPerColumnFill="row"
+        // slidesPerColumn={2}
+        // slidesPerColumnFill="row"
         spaceBetween={30}
         breakpoints={{
           320: {
@@ -136,10 +136,10 @@ export const MainBody = () => {
           setSwiper(s);
         }}
 
-        onInit={(swiper) => console.log("Swiper initialized!", swiper)}
-        onSlideChange={(swiper) => {
-          console.log("Slide index changed to: ", swiper.activeIndex);
-        }}
+        // onInit={(swiper) => console.log("Swiper initialized!", swiper)}
+        // onSlideChange={(swiper) => {
+        //   console.log("Slide index changed to: ", swiper.activeIndex);
+        // }}
       >
         {slides}
         <SwiperSlide style={{ listStyle: "none" }}>
