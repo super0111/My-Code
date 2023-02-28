@@ -17,7 +17,6 @@ const navItems = [
   { name: 'Earn', to: 'earn' },
   { name: 'NFT', to: 'nft' },
 ]
-
 const networks = [
   { symbol: '', networkName: 'Select a Network' },
   { symbol: BNBSymbol, networkName: 'BNB Smart Chain', networkName1: 'BNB' },

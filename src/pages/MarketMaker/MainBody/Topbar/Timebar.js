@@ -10,7 +10,7 @@ export const Timebar = (props) => {
   const { renderer, count } = props;
 
   return (
-    <Box display={'flex'} alignItems={'center'} sx={{
+    <Box display={'flex'} justifyContent={'end'} alignItems={'center'} sx={{
       width: { sm: '305px', xs: '188px'},
     }}>
       <Box display={'flex'} alignItems={'center'} gap={2} py={2} pl={2} pr={12} sx={{
