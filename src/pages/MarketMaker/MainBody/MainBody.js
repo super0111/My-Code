@@ -81,26 +81,26 @@ export const MainBody = () => {
         initialSlide={3}
         centeredSlides={true}
         centerInsufficientSlides={true}
-        // slidesPerColumn={2}
-        // slidesPerColumnFill="row"
+        slidesPerColumn={2}
+        slidesPerColumnFill="row"
         spaceBetween={30}
         // slidesPerGroup={2}
         // autoplay
         // loop
-        onReachEnd={() => {
-          const tmp = slides.unshift();
-          slides.push(tmp);
-        }}
-        navigation
+        // onReachEnd={() => {
+        //   const tmp = slides.unshift();
+        //   slides.push(tmp);
+        // }}
+        // navigation
         // pagination
         onSwiper={(s) => {
           setSwiper(s);
         }}
 
-        // onInit={(swiper) => console.log("Swiper initialized!", swiper)}
-        // onSlideChange={(swiper) => {
-        //   console.log("Slide index changed to: ", swiper.activeIndex);
-        // }}
+        onInit={(swiper) => console.log("Swiper initialized!", swiper)}
+        onSlideChange={(swiper) => {
+          console.log("Slide index changed to: ", swiper.activeIndex);
+        }}
       >
         {slides}
         <SwiperSlide style={{ listStyle: "none" }}>
@@ -116,6 +116,7 @@ export const MainBody = () => {
           <SliderItem4 renderer={renderer} count={count2}/>
         </SwiperSlide>
       </Swiper>
+      
       <Chartbar />  
     </Box>
   )
