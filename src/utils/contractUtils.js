@@ -166,7 +166,7 @@ export const approveTokens = async () => {
     const { ethereum } = window
 
     if (ethereum) {
-      let amountToStake = 100 //@TODO userinput here
+      // let amountToStake = 100 //@TODO userinput here
 
       console.log('started')
       const provider = new ethers.providers.Web3Provider(ethereum)

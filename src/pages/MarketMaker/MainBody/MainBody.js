@@ -1,18 +1,8 @@
-import { useState } from "react";
+import { useState, useRef  } from "react";
 import { Box, Typography } from "@mui/material"
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
-// import SwiperCore, {
-//   Navigation,
-//   Pagination,
-//   Autoplay,
-//   Virtual
-// } from "swiper/core";
 import "swiper/swiper-bundle.css";
-// import 'swiper/css';
-// import 'swiper/css/navigation';
-// import 'swiper/css/pagination';
-// import 'swiper/css/scrollbar';
 
 import { Topbar } from "./Topbar/Topbar";
 import { Chartbar } from "./Chartbar/Chartbar";
@@ -55,8 +45,6 @@ const renderer1 = ({ minutes, seconds, completed }) => {
   }
 };
 
-// SwiperCore.use([Navigation, Pagination, Autoplay, Virtual]);
-
 export const MainBody = () => {
   const slides = [];
   const [swiper, setSwiper] = useState(null);
@@ -83,10 +71,11 @@ export const MainBody = () => {
       <SliderbarMobile next={next} previous={previous} />
       <Swiper
         id="swiper"
-        // modules={[Navigation, Pagination, Scrollbar, A11y]}
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
         // pagination={{ clickable: true }}
         // scrollbar={{ draggable: true }}
         // virtual
+        // allowTouchMove={false}
         slidesPerView={9/2}
         initialSlide={3}
         centeredSlides={true}
@@ -153,7 +142,7 @@ export const MainBody = () => {
         <SwiperSlide style={{ listStyle: "none" }}>
           <SliderItem1 />
         </SwiperSlide>
-        <SwiperSlide style={{ listStyle: "none" }}>
+        <SwiperSlide style={{ listStyle: "none" }} allowTouchMove={false}>
           <SliderItem2 />
         </SwiperSlide>
         <SwiperSlide style={{ listStyle: "none" }}>
