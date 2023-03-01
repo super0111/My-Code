@@ -22,7 +22,7 @@ import { SliderbarMobile } from "./Topbar/SliderbarMobile";
 
 const count1 = 300000;
 const count2 = 300000*2;
-const Completionist = () => console.log('count downed');
+const Completionist = () => <span>Go</span>;
 const renderer = ({ minutes, seconds, completed }) => {
   if (completed) {
     return <Completionist />;
