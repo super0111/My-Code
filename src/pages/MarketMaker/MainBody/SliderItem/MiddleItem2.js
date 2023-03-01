@@ -1,7 +1,9 @@
 import { Box, Typography, Button } from "@mui/material"
 import { palette } from "../../../../themes";
 
-export const MiddleItem2 = () => {
+export const MiddleItem2 = (props) => {
+  const { createBetModal, setCreateBetModal } = props
+
   return (
     <Box sx={{
       background: 'linear-gradient(rgb(83, 222, 233) 0%, rgb(118, 69, 217) 100%)',
@@ -28,18 +30,21 @@ export const MiddleItem2 = () => {
             0.0089 BNB
           </Typography>
         </Box>
-        <Button sx={{
-          background: '#31d0aa',
-          border: 'none',
-          outline: 'none',
-          fontSize: 14,
-          color: palette.common.white,
-          fontWeight: 600,
-          padding: '6.5px 0',
-          width: '100%',
-          borderRadius: '16px !important',
-          textTransform: 'initial',
-        }}>
+        <Button
+          onClick={() => setCreateBetModal(!createBetModal)}
+          sx={{
+            background: '#31d0aa',
+            border: 'none',
+            outline: 'none',
+            fontSize: 14,
+            color: palette.common.white,
+            fontWeight: 600,
+            padding: '6.5px 0',
+            width: '100%',
+            borderRadius: '16px !important',
+            textTransform: 'initial',
+          }}
+        >
           Enter UP
         </Button>
         <Button sx={{
@@ -58,6 +63,6 @@ export const MiddleItem2 = () => {
           Enter DOWN
         </Button>
       </Box>
-    </Box>
+    </Box> 
   )
 }
