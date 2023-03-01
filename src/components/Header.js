@@ -32,46 +32,17 @@ export const Header = () => {
   const [currentAccount, setCurrentAccount] = useContext(Context)
   const [ selectedNetworkName, setSelectedNetworkName ] = useState('BNB Smart Chain')
 
+  useEffect(() => {
+    const address = localStorage.getItem("walletLocalStorageKey");
+    if (address)
+    setCurrentAccount(address);
+  }, [currentAccount])
+
   const handleSelectNetwork = (i, name) => {
     if(i !== 0)
       setSelectedNetworkName(name)
   }
 
-  // const checkWalletIsConnected = async () => {
-  //   const { ethereum } = window
-
-  //   if (!ethereum) {
-  //     console.log('Make sure Metamask is installed!')
-  //     return
-  //   } else {
-  //     console.log('Wallet exists,ready to go')
-  //   }
-
-  //   const accounts = await ethereum.request({ method: 'eth_accounts' })
-
-  //   if (accounts.length !== 0) {
-  //     const account = accounts[0]
-  //     console.log('found auth. account', account)
-  //     setCurrentAccount(account)
-  //   } else {
-  //     console.log('no auth. account found')
-  //   }
-  // }
-
-  // const connectWalletHandler = async () => {
-  //   const { ethereum } = window
-  //   if (!ethereum) {
-  //     alert('Install Metamask!')
-  //   }
-
-  //   try {
-  //     const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
-  //     console.log('Found an  account!Address: ', accounts[0])
-  //     setCurrentAccount(accounts[0])
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
   const connectWalletHandler = async () => {
     let res = await ContractUtils.connectWallet();
     if (res.address) {
@@ -90,12 +61,12 @@ export const Header = () => {
     window.location.reload();
   }
 
-  // useEffect(() => {
-  //   const effect = async () => {
-  //     await ContractUtils.checkWalletIsConnected()
-  //   }
-  //   effect()
-  // }, [])
+  useEffect(() => {
+    const effect = async () => {
+      await ContractUtils.checkWalletIsConnected()
+    }
+    effect()
+  }, [])
 
   return (
     <Box display={'flex'} flexDirection={'column'}>
